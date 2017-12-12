@@ -6,6 +6,7 @@ import org.junit.AfterClass;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
+import model.Motor;
 //import motor.Motor;
 import time.MyTimer;
 
@@ -27,14 +28,14 @@ public class MotorTest {
 	@Test(timeout=2100)
 	public void testMotor() {
 		//create a motor and add to the timer as an observer
-		/*
+		
 		Motor motor = new Motor();
 		timer.addObserver(motor);
 		
 		motor.turnOn();
-		while(motor.isOn()) {
+		while(motor.getCurrentState()) {
 		}
-		*/
+		
 		//if test makes it here before 2.1 seconds then test passes
 		assertTrue(true);
 	}
