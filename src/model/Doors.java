@@ -19,7 +19,9 @@ public class Doors implements Observer {
 	}
 	
 	public boolean getCurrentState() {
+		Logger.doorCurrentState(state.getCurrentState());
 		return state.getCurrentState();
 	}
+	
 
 }

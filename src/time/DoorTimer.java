@@ -2,14 +2,14 @@ package time;
 
 import java.util.Observable;
 
-public class MyTimer extends Observable implements Runnable {
+public class DoorTimer extends Observable implements Runnable {
 	//default 1 second per tick
-	public static final int MS_PER_TICK = 1000;
+	public static final int MS_PER_TICK = 5000;
 	
 	private long startTime;
 	private boolean canceled;
 	
-	public MyTimer() {
+	public DoorTimer() {
 		startTime = System.currentTimeMillis();
 	}
 	

@@ -6,15 +6,13 @@ public class DoorStates {
 	
 	private static final boolean CLOSED = false;
 	private static final boolean OPEN = true;
-	private Logger logger;
+
 	
 	protected volatile boolean currentState;
 	
 	public DoorStates() {
 		currentState = false;
-		logger = new Logger();
 	}
-	
 	
 	public boolean getCurrentState() {
 		return currentState;
@@ -23,10 +21,10 @@ public class DoorStates {
 	public void switchDoors() {
 		if (currentState == OPEN) {
 			currentState = CLOSED;
-			logger.doorClosed();
+			Logger.doorClosed();
 		} else {
 			currentState = OPEN;
-			logger.doorOpen();
+			Logger.doorOpen();
 		}
 	}
 	
