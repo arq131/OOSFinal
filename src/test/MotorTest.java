@@ -16,13 +16,13 @@ public class MotorTest {
 	
 	@BeforeClass
 	public static void setUpBeforeClass() throws Exception {
-		timer = new MotorTimer();
-		new Thread(timer).start();
+		//timer = new MotorTimer();
+		//new Thread(timer).start();
 	}
 
 	@AfterClass
 	public static void tearDownAfterClass() throws Exception {
-		timer.cancelTimer();
+		//timer.cancelTimer();
 	}
 
 	/*test fails if motor does not stop within 2.1 seconds
@@ -44,7 +44,8 @@ public class MotorTest {
 	@Test
 	public void testElevator() {
 		Elevator elevator = new Elevator();
-		elevator.goUp();
+		elevator.openDoor();
+		//elevator.goUp();
 	}
 
 }

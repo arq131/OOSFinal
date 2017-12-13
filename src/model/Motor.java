@@ -5,10 +5,10 @@ import java.util.Observer;
 
 import states.MotorStates;
 
-public class Motor extends Observable implements Observer  {
-	
-	private MotorStates state;
-	
+public class Motor extends Observable implements Observer {
+
+	private volatile MotorStates state;
+
 	public Motor() {
 		state = new MotorStates();
 	}
@@ -18,24 +18,27 @@ public class Motor extends Observable implements Observer  {
 		state.switchState();
 		this.setChanged();
 		this.notifyObservers();
+
 	}
-	
+
 	public boolean getCurrentState() {
-		Logger.motorCurrentState(state.getState());
 		return state.getState();
 	}
-	
+
+	public void printCurrentState() {
+		Logger.motorCurrentState(state.getState());
+	}
+
 	public void turnOn() {
 		state.stateOn();
 		this.setChanged();
 		this.notifyObservers();
 	}
-	
+
 	public void turnOff() {
 		state.stateOff();
 		this.setChanged();
 		this.notifyObservers();
 	}
-	
 
 }
