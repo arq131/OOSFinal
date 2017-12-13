@@ -4,7 +4,7 @@ import java.util.Observable;
 
 public class MotorTimer extends Observable implements Runnable {
 	//default 1 second per tick
-	public static final int MS_PER_TICK = 3000;
+	public static final int MS_PER_TICK = 10000;
 	
 	private long startTime;
 	private boolean canceled;

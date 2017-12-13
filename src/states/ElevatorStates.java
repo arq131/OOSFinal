@@ -28,24 +28,27 @@ public class ElevatorStates {
 		currentState = DOWN;
 	}
 	
-	public void goUpOneFloor() {
+	public boolean goUpOneFloor() {
+		currentState = UP;
 		if (currentFloor == 5) {
 			System.out.println("Already at highest floor: 5");
-			return;
+			return false;
 		}
-		currentState = UP;
 		this.currentFloor++;
 		Logger.elevatorCurrentState(currentState);
+		return true;
 	}
 	
-	public void goDownOneFloor() {
+	public boolean goDownOneFloor() {
+		currentState = DOWN;
 		if (currentFloor == 1) {
 			System.out.println("Already at lowest floor: 1");
-			return;
+			return false;
 		}
-		currentState = DOWN;
+		
 		this.currentFloor--;
 		Logger.elevatorCurrentState(currentState);
+		return true;
 	}
 
 	
@@ -61,6 +64,10 @@ public class ElevatorStates {
 		if (currentState == IDLE)
 			return true;
 		return false;
+	}
+	
+	public void setState(int state) {
+		this.currentState = state;
 	}
 
 }

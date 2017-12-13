@@ -32,7 +32,6 @@ public class Elevator implements Observer {
 		if (state.isIdle()) {
 			state.up();
 			motorTimer.run();
-
 		}
 	}
 
@@ -41,33 +40,44 @@ public class Elevator implements Observer {
 		if (state.isIdle()) {
 			state.down();
 			motorTimer.run();
-			doorTimer.run();
 		}
 	}
 
 	public void openDoor() {
+		printCurrentStates();
 		doorTimer.run();
 
 	}
 
 	public void closeDoor() {
-		doorTimer.cancelTimer();
+		printCurrentStates();
+		if (doors.isOpen())
+			doorTimer.cancelTimer();
 	}
 
 	@Override
 	public void update(Observable o, Object arg) {
 		if (state.getCurrentState() == ElevatorStates.UP && !doors.isOpen()) {
-			state.goUpOneFloor();
-			state.idle();
-			return;
+			
+			if (state.goUpOneFloor()) {
+				state.idle();
+				return;
+			} else {
+				resetStates();
+				motorTimer.cancelTimer();
+			}
 		} else if (state.getCurrentState() == ElevatorStates.DOWN && !doors.isOpen()) {
-			state.goDownOneFloor();
-			state.idle();
-			return;
+			
+			if (state.goDownOneFloor()) {
+				state.idle();
+				return;
+			} else {
+				resetStates();
+				motorTimer.cancelTimer();
+			}
 		} else if (state.getCurrentState() == ElevatorStates.IDLE && !doors.isOpen() && !doors.hasOpened()) {
 			motorTimer.cancelTimer();
 			Logger.elevatorFloor(state.getCurrentFloor());
-			
 			doorTimer.run();
 		}
 		motorTimer.cancelTimer();
@@ -81,6 +91,12 @@ public class Elevator implements Observer {
 		doors.printCurrentState();
 		Logger.elevatorCurrentState(state.getCurrentState());
 
+	}
+	
+	public void resetStates() {
+		motor.turnOff();
+		doors.reset();
+		state.setState(ElevatorStates.IDLE);
 	}
 
 }

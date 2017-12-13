@@ -31,14 +31,14 @@ public class Motor extends Observable implements Observer {
 
 	public void turnOn() {
 		state.stateOn();
-		this.setChanged();
-		this.notifyObservers();
 	}
 
 	public void turnOff() {
 		state.stateOff();
-		this.setChanged();
-		this.notifyObservers();
+	}
+	
+	public void reset() {
+		state.setState(false);
 	}
 
 }

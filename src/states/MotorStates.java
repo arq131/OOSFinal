@@ -11,18 +11,11 @@ public class MotorStates {
 	public MotorStates() {
 		state = OFF;
 	}
-	
-	/**
-	 * gets the current state of the motor
-	 * @return
-	 */
+
 	public boolean getState() {
 		return this.state;
 	}
 	
-	/**
-	 * Changes the state of the motor.
-	 */
 	public void switchState() {
 		if (state == ON) {
 			this.state = OFF;
@@ -32,28 +25,18 @@ public class MotorStates {
 			Logger.motorOn();
 		}
 	}
-	
-	/**
-	 * Turns the motor on
-	 */
+
 	public void stateOn() {
 		if (state != ON) {
 			this.state = ON;
-		} else {
-			// use logger?
-			System.out.println("Motor state is already on.");
+			Logger.motorOn();
 		}
-
 	}
 	
-	/**
-	 * Turns the motor off
-	 */
 	public void stateOff() {
 		if (state != OFF) {
 			this.state = OFF;
-		} else {
-			System.out.println("Motor state is already off.");
+			Logger.motorOff();
 		}
 	}
 	
@@ -67,6 +50,10 @@ public class MotorStates {
 		if (state == OFF)
 			return true;
 		return false;
+	}
+	
+	public void setState(boolean state) {
+		this.state = state;
 	}
 
 }
