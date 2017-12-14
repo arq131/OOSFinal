@@ -8,7 +8,6 @@ public class Logger {
 	private static final String MOTOR_OFF = "Motor is off.";
 	private static final String DOOR_CLOSED = "Elevator doors are closed.";
 	private static final String DOOR_OPEN = "Elevator doors are open.";
-	private static final String ERROR_FLOOR = "Not a valid floor selected.";
 	private static final String ELEVATOR_IDLE = "Elevator is idle";
 	private static final String ELEVATOR_UP = "Elevator is going up";
 	private static final String ELEVATOR_DOWN = "Elevator is going down";
@@ -75,11 +74,5 @@ public class Logger {
 		System.out.println(ELEVATOR_DOWN);
 	}
 	
-	public static void report(String message) {
-		System.out.println(message);
-	}
 	
-	public static void floorError() {
-		System.out.println(ERROR_FLOOR);
-	}
 }

@@ -17,6 +17,7 @@ public class ElevatorStates {
 	}
 	
 	public void idle() {
+		Logger.elevatorIdle();
 		currentState = IDLE;
 	}
 	

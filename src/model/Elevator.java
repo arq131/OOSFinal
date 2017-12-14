@@ -57,10 +57,14 @@ public class Elevator implements Observer {
 
 	@Override
 	public void update(Observable o, Object arg) {
+		
+		if (!motor.isOn() && !doors.isOpen() && !doors.hasOpened()) {
+			state.idle();
+		}
+		
 		if (state.getCurrentState() == ElevatorStates.UP && !doors.isOpen()) {
 			
 			if (state.goUpOneFloor()) {
-				state.idle();
 				return;
 			} else {
 				resetStates();
@@ -69,7 +73,6 @@ public class Elevator implements Observer {
 		} else if (state.getCurrentState() == ElevatorStates.DOWN && !doors.isOpen()) {
 			
 			if (state.goDownOneFloor()) {
-				state.idle();
 				return;
 			} else {
 				resetStates();

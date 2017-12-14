@@ -10,7 +10,7 @@ public class MotorTest {
 	public void testElevator() {
 		Elevator elevator = new Elevator();
 		elevator.goUp();
-		elevator.goDown();
+		//elevator.goDown();
 	}
 
 }

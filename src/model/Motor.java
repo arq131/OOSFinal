@@ -40,5 +40,11 @@ public class Motor extends Observable implements Observer {
 	public void reset() {
 		state.setState(false);
 	}
+	
+	public boolean isOn() {
+		if (state.getState())
+			return true;
+		return false;
+	}
 
 }

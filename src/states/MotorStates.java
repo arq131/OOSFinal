@@ -40,18 +40,6 @@ public class MotorStates {
 		}
 	}
 	
-	public boolean isOn() {
-		if (state == ON) 
-			return true;
-		return false;
-	}
-	
-	public boolean isOff() {
-		if (state == OFF)
-			return true;
-		return false;
-	}
-	
 	public void setState(boolean state) {
 		this.state = state;
 	}
